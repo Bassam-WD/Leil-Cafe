@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0D0B0A" />
+
+  <!-- SEO & Brand Metadata -->
+  <title>بن ليل | Bon Leil - المنيو الرقمي وأجود أنواع القهوة المختصة</title>
+  <meta name="description"
+    content="بن ليل - قهوة تُحكى... مش بس تُشرب. استمتع بأجود أنواع البن المحمص طازجاً والمشروبات الفاخرة والعصائر الطبيعية. مفتوح 24 ساعة في إسكندرية الجديدة - فارسكور - دمياط." />
+  <meta name="keywords"
+    content="بن ليل, كافيه بن ليل, منيو بن ليل, قهوة تركي, إسبريسو, توليفة ليل, قهوة فارسكور دمياط, بن مطحون, قهوة مختصة" />
+  <meta property="og:title" content="بن ليل | Bon Leil - قهوة تُحكى... مش بس تُشرب" />
+  <meta property="og:description"
+    content="تصفح منيو بن ليل وأطلب قهوتك المفضلة وأجود أكياس البن الطازج المحمص يومياً مباشرة عبر واتساب." />
+  <meta property="og:image" content="logo.png" />
+  <meta property="og:type" content="website" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="logo.png" />
+
+  <!-- Google Fonts: Amiri (Classical Literary Display) & Cairo (Architectural Legibility UI) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Cairo:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Tailwind CSS CDN with Custom Theme Configuration from DESIGN.md -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            obsidian: '#0D0B0A',
+            surface: {
+              DEFAULT: '#151312',
+              dim: '#151312',
+              bright: '#3C3837',
+              lowest: '#100E0D',
+              low: '#1D1B1A',
+              card: '#171311',
+              container: '#221F1E',
+              high: '#2C2928',
+              highest: '#373433',
+            },
+            primary: {
+              DEFAULT: '#F2BE71',
+              gold: '#D4A359',
+              goldDark: '#B6833D',
+              glow: '#F3C97E',
+              container: '#D4A359',
+              fixed: '#FFDDB1',
+            },
+            secondary: {
+              DEFAULT: '#F7B98E',
+              roast: '#8A5A36',
+              container: '#6A3F1D',
+            },
+            tertiary: {
+              DEFAULT: '#D3C5AA',
+              crema: '#F5E6CA',
+              container: '#B7AA90',
+            },
+            onSurface: '#E8E1DF',
+            onSurfaceVariant: '#D3C4B3',
+            muted: '#A89F91',
+            dim: '#7E7365',
+          },
+          fontFamily: {
+            amiri: ['Amiri', 'serif'],
+            cairo: ['Cairo', 'sans-serif'],
+          },
+          borderRadius: {
+            sm: '0.125rem',   /* 2px */
+            DEFAULT: '0.25rem', /* 4px */
+            md: '0.375rem',   /* 6px */
+            lg: '0.5rem',     /* 8px */
+            xl: '0.75rem',    /* 12px */
+            full: '9999px',
+          },
+          spacing: {
+            'gutter': '1.5rem',
+            'gutter-desktop': '2rem',
+            'margin': '1.25rem',
+            'margin-desktop': '3.5rem',
+            'space-xs': '0.375rem',
+            'space-sm': '0.75rem',
+            'space-md': '1.25rem',
+            'space-lg': '2rem',
+            'space-xl': '3rem',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Design System Styles -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="bg-obsidian text-onSurface font-cairo antialiased selection:bg-primary-gold selection:text-obsidian pb-16 md:pb-0">
+
+  <!-- ======================================================================
+       Header / Navigation Bar (Floating Smoky Glass - Level 3)
+       ====================================================================== -->
+  <header id="main-nav"
+    class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-md bg-obsidian/85 border-b border-[rgba(212,163,89,0.15)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+
+      <!-- Logo & Brand Name -->
+      <a href="#hero" class="flex items-center gap-3.5 group">
+        <div
+          class="w-12 h-12 rounded-full overflow-hidden border border-[rgba(212,163,89,0.4)] p-0.5 bg-[#0D0B0A] flex items-center justify-center transition-transform group-hover:scale-105 shadow-[0_0_12px_rgba(212,163,89,0.2)]">
+          <img src="logo.png" alt="شعار بن ليل" class="w-full h-full object-contain" />
+        </div>
+        <div class="flex flex-col">
+          <span class="font-amiri text-2xl font-bold gold-gradient-text tracking-wide">بن ليل</span>
+          <span class="text-[10px] text-muted -mt-1 font-cairo tracking-wider">BON LEIL COFFEE</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links with Animated Underline -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a href="#hero" class="link-gold-underline">الرئيسية</a>
+        <a href="#menu" class="link-gold-underline flex items-center gap-1.5 text-primary-gold">
+          <i class="fa-solid fa-utensils text-xs"></i>
+          <span>المنيو الرقمي</span>
+        </a>
+        <a href="#features" class="link-gold-underline">سر الجودة</a>
+        <a href="#contact" class="link-gold-underline">تواصل معنا</a>
+      </nav>
+
+      <!-- Quick Action Buttons -->
+      <div class="flex items-center gap-3">
+        <!-- Cart Quick View Button in Header -->
+        <button type="button" 
+                onclick="openCart()"
+                class="hidden sm:inline-flex items-center gap-2 btn-gold-outline text-xs px-3.5 py-2">
+          <i class="fa-solid fa-basket-shopping text-sm text-primary-gold"></i>
+          <span>سلة الطلب</span>
+          <span id="cart-header-badge" class="bg-primary-gold text-obsidian text-[10px] font-bold px-1.5 py-0.2 rounded-full hidden">0</span>
+        </button>
+
+        <a href="https://wa.me/201033414033" target="_blank" rel="noopener noreferrer"
+          class="btn-gold text-xs sm:text-sm px-4 py-2">
+          <i class="fa-brands fa-whatsapp text-sm"></i>
+          <span>طلب فوري</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ======================================================================
+       Hero Section (Atmospheric Palette & Cinematic Video)
+       ====================================================================== -->
+  <section id="hero" class="relative min-h-[92vh] flex items-center justify-center pt-24 pb-16 overflow-hidden">
+
+    <!-- Background HTML5 Video with Luxury Chiaroscuro Overlays -->
+    <div class="absolute inset-0 w-full h-full z-0 overflow-hidden bg-cover bg-center"
+      style="background-image: url('coffee-cup.jpg');">
+      <video autoplay loop muted playsinline poster="coffee-cup.jpg"
+        class="absolute inset-0 w-full h-full object-cover brightness-[0.7] contrast-[1.1]">
+        <source src="hero-video.mp4" type="video/mp4">
+      </video>
+
+      <!-- Deep Obsidian Tonal Vignette -->
+      <div class="absolute inset-0 bg-gradient-to-b from-[#0D0B0A]/90 via-[#0D0B0A]/75 to-[#0D0B0A] z-10"></div>
+      <div
+        class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,rgba(13,11,10,0.9)_100%)] z-10 pointer-events-none">
+      </div>
+    </div>
+
+    <!-- Subtle Video Play/Pause Control (Top-Left of Hero) -->
+    <button id="video-toggle-btn" 
+            type="button"
+            onclick="toggleHeroVideo()" 
+            class="absolute top-24 left-6 z-30 w-9 h-9 rounded-full bg-[#0D0B0A]/75 border border-primary-gold/35 text-tertiary-crema hover:text-primary-gold flex items-center justify-center backdrop-blur-md transition shadow-lg cursor-pointer"
+            title="إيقاف / تشغيل فيديو الخلفية">
+      <i class="fa-solid fa-pause text-xs" id="video-toggle-icon"></i>
+    </button>
+
+    <!-- Centered Hero Narrative -->
+    <div class="relative z-20 max-w-4xl mx-auto px-4 sm:px-6 text-center flex flex-col items-center">
+
+      <!-- Dynamic Live Roastery Status Pill with Local Time -->
+      <div
+        class="flavor-chip mb-6 backdrop-blur-md bg-[#100E0D]/85 border-[rgba(212,163,89,0.35)] shadow-[0_4px_20px_rgba(0,0,0,0.7)] py-1.5 px-4 text-xs">
+        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.9)] ml-1.5"></span>
+        <span id="roastery-live-time" class="font-cairo font-medium text-tertiary-crema">مفتوح 24 ساعة • إسكندرية الجديدة - فارسكور - دمياط</span>
+      </div>
+
+      <!-- Majestic Brand Calligraphic Lockup -->
+      <div class="mb-4 text-center">
+        <span class="inline-block text-[11px] font-bold text-primary-gold tracking-[0.25em] uppercase border-y border-primary-gold/30 py-1 px-4 mb-3">
+          محمصة وبن مختص • دمياط 34711
+        </span>
+        <h1 class="font-amiri text-6xl sm:text-7xl md:text-8xl font-bold gold-gradient-text tracking-normal mb-1">
+          بُـنّ لَـيْـل
+        </h1>
+        <span class="block text-xs sm:text-sm font-cairo tracking-[0.35em] text-primary-gold/80 uppercase font-semibold">
+          BON LEIL COFFEE
+        </span>
+      </div>
+
+      <!-- Poetic Tagline with Gilded Hairline Dividers -->
+      <div class="flex items-center justify-center gap-3 mb-5 max-w-xl mx-auto">
+        <span class="w-8 sm:w-16 h-[1px] bg-gradient-to-r from-transparent to-primary-gold/60"></span>
+        <h2 class="font-amiri text-xl sm:text-2xl md:text-3xl text-tertiary-crema font-bold italic tracking-wide">
+          «قَهْوَةٌ تُحْكَى... مِشْ بَسْ تُشْرَبْ»
+        </h2>
+        <span class="w-8 sm:w-16 h-[1px] bg-gradient-to-l from-transparent to-primary-gold/60"></span>
+      </div>
+
+      <!-- Bio Editorial Narrative -->
+      <p class="font-cairo text-sm sm:text-base text-onSurfaceVariant max-w-2xl mb-8 leading-relaxed font-normal">
+        رحلة استثنائية في عالم التحميص الليلي المتقن • ننتقي لك أجود محاصيل الأرابيكا لنقدم فنجاناً بنكهة عميقة وقوام مخملي يصنع فارق يومك وسهرتك
+      </p>
+
+      <!-- Action Buttons (0.25rem Radius as per DESIGN.md) -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
+        <!-- Gold Action Button -->
+        <a href="#menu" class="btn-gold w-full sm:w-auto px-8 py-3.5 text-base group">
+          <i class="fa-solid fa-mug-hot text-lg transition-transform group-hover:rotate-12"></i>
+          <span>تصفح المنيو الرقمي</span>
+          <i class="fa-solid fa-arrow-down text-xs mr-1 animate-bounce"></i>
+        </a>
+
+        <!-- Obsidian Wire Secondary Button -->
+        <a href="https://wa.me/201033414033" target="_blank" rel="noopener noreferrer"
+          class="btn-gold-outline w-full sm:w-auto px-8 py-3.5 text-base">
+          <i class="fa-brands fa-whatsapp text-emerald-400 text-xl"></i>
+          <span>محادثة واتساب مباشرة</span>
+        </a>
+      </div>
+
+      <!-- Floating Heritage Metrics Strip -->
+      <div class="w-full max-w-5xl mx-auto mt-12 px-2">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 p-4 rounded-lg bg-[#161412]/85 border border-[rgba(212,163,89,0.22)] backdrop-blur-md shadow-2xl">
+          
+          <div class="flex items-center gap-3 p-2 border-l border-white/5 last:border-l-0">
+            <span class="w-9 h-9 rounded-sm bg-primary-gold/10 border border-primary-gold/25 flex items-center justify-center text-primary-gold text-base flex-shrink-0">
+              <i class="fa-solid fa-seedling"></i>
+            </span>
+            <div class="text-right">
+              <strong class="text-xs text-tertiary-crema block font-bold">محاصيل نقية 100%</strong>
+              <span class="text-[10px] text-muted">أرابيكا وروبوستا نخب أول</span>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3 p-2 border-l border-white/5 last:border-l-0">
+            <span class="w-9 h-9 rounded-sm bg-primary-gold/10 border border-primary-gold/25 flex items-center justify-center text-primary-gold text-base flex-shrink-0">
+              <i class="fa-solid fa-fire-burner"></i>
+            </span>
+            <div class="text-right">
+              <strong class="text-xs text-tertiary-crema block font-bold">تحميص دفعات صغيرة</strong>
+              <span class="text-[10px] text-muted">طازج يومياً بهواء ساخن</span>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3 p-2 border-l border-white/5 last:border-l-0">
+            <span class="w-9 h-9 rounded-sm bg-primary-gold/10 border border-primary-gold/25 flex items-center justify-center text-primary-gold text-base flex-shrink-0">
+              <i class="fa-solid fa-mortar-pestle"></i>
+            </span>
+            <div class="text-right">
+              <strong class="text-xs text-tertiary-crema block font-bold">طحن مخصص فوري</strong>
+              <span class="text-[10px] text-muted">ركوة • فلتر • فرنش بريس</span>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3 p-2">
+            <span class="w-9 h-9 rounded-sm bg-primary-gold/10 border border-primary-gold/25 flex items-center justify-center text-primary-gold text-base flex-shrink-0">
+              <i class="fa-solid fa-moon"></i>
+            </span>
+            <div class="text-right">
+              <strong class="text-xs text-tertiary-crema block font-bold">ملاذ ليلي 24 ساعة</strong>
+              <span class="text-[10px] text-muted">فارسكور • دمياط طوال الأسبوع</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       Digital Menu Section (#menu)
+       ====================================================================== -->
+  <section id="menu" class="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+
+    <!-- Section Header (Amiri Classical Warmth) -->
+    <div class="text-center mb-10">
+      <div class="inline-flex items-center gap-2 text-xs font-bold text-primary-gold tracking-widest uppercase mb-2">
+        <span class="w-8 h-[1px] bg-primary-gold/60"></span>
+        <span>قائمة المنتجات والطقوس الليلية</span>
+        <span class="w-8 h-[1px] bg-primary-gold/60"></span>
+      </div>
+      <h2 class="headline-lg text-tertiary-crema mb-3">
+        منيو <span class="gold-gradient-text">بن ليل</span>
+      </h2>
+      <p class="text-muted text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
+        تصفح تشكيلتنا المتفردة من المشروبات الطازجة والقهوة المختصة، أو تسوق أكياس البن المعبأة لطحن طازج في منزلك.
+      </p>
+    </div>
+
+    <!-- ==================================================================
+         Modern Feature: Coffee & Mood Matcher (مكتشف المزاج والقهوة)
+         ================================================================== -->
+    <div class="max-w-3xl mx-auto mb-10">
+      <div class="mood-card">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+          <div class="flex items-center gap-2.5">
+            <span class="w-8 h-8 rounded-full bg-primary-gold/15 border border-primary-gold/40 flex items-center justify-center text-primary-gold text-sm">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </span>
+            <div>
+              <h4 class="font-headline-sm text-tertiary-crema">مساعد المزاج • كيف تحب قهوتك الليلة؟</h4>
+              <p class="text-xs text-muted">اختر حالتك وسيقوم النظام بترشيح أنسب التوليفات لك تلقائياً</p>
+            </div>
+          </div>
+
+          <button id="mood-reset-badge" 
+                  type="button" 
+                  onclick="resetMood()" 
+                  class="hidden text-[11px] text-primary-gold hover:text-primary-glow items-center gap-1.5 transition underline cursor-pointer">
+            <i class="fa-solid fa-rotate-left text-[10px]"></i>
+            <span>إلغاء الترشيح (عرض الكل)</span>
+          </button>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2.5">
+          <button type="button" 
+                  onclick="selectMood('energy')" 
+                  data-mood="energy"
+                  class="mood-btn">
+            <i class="fa-solid fa-bolt text-amber-400"></i>
+            <span>طاقة وتركيز فائق</span>
+          </button>
+
+          <button type="button" 
+                  onclick="selectMood('royal')" 
+                  data-mood="royal"
+                  class="mood-btn">
+            <i class="fa-solid fa-crown text-primary-gold"></i>
+            <span>مذاق ملكي متوازن</span>
+          </button>
+
+          <button type="button" 
+                  onclick="selectMood('calm')" 
+                  data-mood="calm"
+                  class="mood-btn">
+            <i class="fa-solid fa-leaf text-emerald-400"></i>
+            <span>رواق وهدوء مسائي</span>
+          </button>
+
+          <button type="button" 
+                  onclick="selectMood('fresh')" 
+                  data-mood="fresh"
+                  class="mood-btn">
+            <i class="fa-solid fa-snowflake text-sky-400"></i>
+            <span>انتعاش وفواكه</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================================================================
+         Modern Feature: Featured Roast of the Night Spotlight
+         ================================================================== -->
+    <div class="max-w-4xl mx-auto mb-10">
+      <div class="luxury-card overflow-hidden p-6 md:p-8 bg-gradient-to-r from-surface-card via-surface-container to-surface-card border border-primary-gold/30 shadow-2xl relative">
+        <div class="absolute top-4 left-4 z-10">
+          <span class="badge-special text-xs font-bold px-3 py-1 flex items-center gap-1.5 shadow-lg">
+            <i class="fa-solid fa-crown text-[11px] text-primary-gold"></i>
+            <span>محصول وسهرة الليلة • إصدار محدود</span>
+          </span>
+        </div>
+
+        <div class="flex flex-col md:flex-row items-center gap-6">
+          <div class="w-32 h-40 sm:w-40 sm:h-48 flex-shrink-0 flex items-center justify-center bg-obsidian/70 rounded-lg p-3 border border-primary-gold/20 shadow-inner">
+            <img src="coffee-bag.jpg" alt="توليفة ليل اسبيشيال" class="h-full w-auto object-contain filter drop-shadow-[0_10px_20px_rgba(0,0,0,0.9)]" />
+          </div>
+
+          <div class="flex-1 text-right">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="flavor-chip text-[10px]">
+                <span class="ember-dot"></span>
+                إصدار خاص ★
+              </span>
+              <span class="text-xs text-muted">مايكرو-لوت فاخر • كولومبيا وإثيوبيا</span>
+            </div>
+
+            <h3 class="font-headline-md text-tertiary-crema gold-gradient-text mb-2">
+              توليفة ليل اسبيشيال (Signature Reserve)
+            </h3>
+
+            <p class="text-xs sm:text-sm text-muted leading-relaxed mb-4">
+              أعلى درجات الفخامة النقية من محمصة بن ليل؛ خلطة سرية محوجة بحب الهيل الملكي والمستكة الحرة مع نغمات الشوكولاتة السويسرية والكراميل المدخن.
+            </p>
+
+            <div class="flex flex-wrap items-center justify-between gap-4 pt-3 border-t border-primary-gold/15">
+              <div class="flex flex-wrap gap-1.5">
+                <span class="flavor-chip text-[10px]">شوكولاتة سويسرية</span>
+                <span class="flavor-chip text-[10px]">هيل ملكي</span>
+                <span class="flavor-chip text-[10px]">كراميل مدخن</span>
+              </div>
+
+              <div class="flex items-center gap-2.5">
+                <button type="button" 
+                        onclick="openQuickView('bean-7')" 
+                        class="btn-gold-outline text-xs px-3.5 py-2">
+                  <i class="fa-solid fa-eye ml-1"></i>
+                  <span>دليل التحضير</span>
+                </button>
+
+                <button type="button" 
+                        onclick="addBeanToCart('bean-7')" 
+                        class="btn-gold text-xs px-4 py-2">
+                  <i class="fa-solid fa-cart-plus ml-1"></i>
+                  <span>أضف للطلب فوراً</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Search Bar -->
+    <div class="max-w-xl mx-auto mb-10">
+      <div class="relative">
+        <span class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none text-muted">
+          <i class="fa-solid fa-magnifying-glass text-primary-gold"></i>
+        </span>
+        <input type="text" id="search-input" placeholder="ابحث عن مشروب، صنف قهوة، أو نكهة تذوق..."
+          class="input-nocturne w-full pr-11 pl-10 py-3.5 text-sm" />
+        <button id="search-clear-btn"
+          class="absolute inset-y-0 left-0 flex items-center pl-4 text-muted hover:text-tertiary-crema transition cursor-pointer"
+          style="display: none;" title="مسح البحث">
+          <i class="fa-solid fa-xmark text-sm"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- 2-Tab Navigation Switcher -->
+    <div class="max-w-2xl mx-auto mb-10">
+      <div class="bg-surface-lowest p-1.5 rounded-[4px] border border-[rgba(212,163,89,0.18)] flex items-center gap-2 shadow-lg">
+
+        <!-- Tab 1: ركن المشروبات (الكافيه) -->
+        <button id="tab-drinks-btn"
+          class="tab-btn active flex-1 py-3 px-4 text-center flex items-center justify-center gap-2 text-sm sm:text-base cursor-pointer">
+          <i class="fa-solid fa-mug-saucer text-lg"></i>
+          <span>ركن المشروبات (الكافيه)</span>
+        </button>
+
+        <!-- Tab 2: قسم بيع القهوة (البن) -->
+        <button id="tab-beans-btn"
+          class="tab-btn flex-1 py-3 px-4 text-center flex items-center justify-center gap-2 text-sm sm:text-base cursor-pointer">
+          <i class="fa-solid fa-cubes-stacked text-lg"></i>
+          <span>قسم بيع القهوة (البن المطحون)</span>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Category Filter Pills Container -->
+    <div id="category-filters-container" class="mb-10">
+      <div class="flex items-center gap-2 pb-2 overflow-x-auto no-scrollbar scroll-smooth" id="category-pills">
+        <!-- Rendered dynamically by script.js -->
+      </div>
+    </div>
+
+    <!-- ==================================================================
+         Tab 1 Content: Drinks Menu
+         ================================================================== -->
+    <div id="tab-drinks-content" class="tab-content active-tab">
+      <div id="drinks-container">
+        <!-- Rendered dynamically by script.js -->
+      </div>
+    </div>
+
+    <!-- ==================================================================
+         Tab 2 Content: Packaged Coffee Beans & Profile Meter
+         ================================================================== -->
+    <div id="tab-beans-content" class="tab-content hidden-tab">
+
+      <!-- Coffee Beans Intro Banner -->
+      <div
+        class="mb-8 p-6 rounded-lg bg-gradient-to-r from-surface-card via-surface-container to-surface-card border border-[rgba(212,163,89,0.25)] flex flex-col md:flex-row items-center justify-between gap-5 shadow-lg">
+        <div class="flex items-center gap-4">
+          <div
+            class="w-14 h-14 rounded-sm bg-primary-gold/10 border border-primary-gold/30 flex items-center justify-center text-primary-gold text-2xl flex-shrink-0 shadow-inner">
+            <i class="fa-solid fa-mortar-pestle"></i>
+          </div>
+          <div>
+            <h3 class="font-headline-sm text-tertiary-crema">حبوب بن منتقاة بعناية • تحميص طازج يومياً</h3>
+            <p class="text-xs md:text-sm text-muted mt-1 leading-relaxed">
+              اختر نوع قهوتك المفضلة والوزن المناسب، مع تحديد درجة الطحن (ناعم للتركي / وسط للفلتر / خشن للمكبس)، واطلب مباشرة عبر واتساب.
+            </p>
+          </div>
+        </div>
+        <div class="flex-shrink-0">
+          <span class="flavor-chip text-xs">
+            <span class="ember-dot"></span>
+            <span>طحن مخصص حسب رغبتك</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Coffee Beans Grid (12-Column Responsive System) -->
+      <div id="beans-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Rendered dynamically with Coffee Profile Meter by script.js -->
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ======================================================================
+       Features / Why "بن ليل" Section (Level 1 Surface Stacking)
+       ====================================================================== -->
+  <section id="features" class="py-16 md:py-20 bg-surface-lowest border-y border-[rgba(212,163,89,0.12)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="text-center mb-12">
+        <h3 class="headline-lg text-tertiary-crema mb-2">
+          لماذا تختار قهوة <span class="gold-gradient-text">بن ليل</span>؟
+        </h3>
+        <p class="text-sm text-muted max-w-md mx-auto">أسرار الجودة والاتقان في كل فنجان نحضره بشغف</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <!-- Feature 1 -->
+        <div class="luxury-card p-6 flex flex-col items-center text-center group">
+          <div
+            class="w-14 h-14 rounded-sm bg-primary-gold/10 border border-primary-gold/25 flex items-center justify-center text-primary-gold text-2xl mb-4 group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-fire"></i>
+          </div>
+          <h4 class="font-bold text-base text-tertiary-crema mb-2 font-cairo">تحميص طازج يومياً</h4>
+          <p class="text-xs text-muted leading-relaxed font-cairo">
+            نحمص حبوب البن على دفعات صغيرة بأحدث تقنيات التحميص الهوائي لضمان الحفاظ على الزيوت العطرية والنكهات الأصيلة.
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="luxury-card p-6 flex flex-col items-center text-center group">
+          <div
+            class="w-14 h-14 rounded-sm bg-primary-gold/10 border border-primary-gold/25 flex items-center justify-center text-primary-gold text-2xl mb-4 group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-crown"></i>
+          </div>
+          <h4 class="font-bold text-base text-tertiary-crema mb-2 font-cairo">توليفات ملكية خاصة</h4>
+          <p class="text-xs text-muted leading-relaxed font-cairo">
+            «توليفة ليل» و«توليفة طرشة» خلطات حصرية بسرية تامة لن تجد عمق مذاقها وجودتها إلا في كافيه ومحمصة بن ليل.
+          </p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="luxury-card p-6 flex flex-col items-center text-center group">
+          <div
+            class="w-14 h-14 rounded-sm bg-primary-gold/10 border border-primary-gold/25 flex items-center justify-center text-primary-gold text-2xl mb-4 group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-gem"></i>
+          </div>
+          <h4 class="font-bold text-base text-tertiary-crema mb-2 font-cairo">حبوب بن نقية 100%</h4>
+          <p class="text-xs text-muted leading-relaxed font-cairo">
+            محاصيل مختارة بعناية من أفضل مزارع إثيوبيا والبرازيل وكولومبيا بدون أي إضافات كيميائية أو نكهات مصطنعة.
+          </p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="luxury-card p-6 flex flex-col items-center text-center group">
+          <div
+            class="w-14 h-14 rounded-sm bg-primary-gold/10 border border-primary-gold/25 flex items-center justify-center text-primary-gold text-2xl mb-4 group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-clock"></i>
+          </div>
+          <h4 class="font-bold text-base text-tertiary-crema mb-2 font-cairo">خدمة متواصلة 24 ساعة</h4>
+          <p class="text-xs text-muted leading-relaxed font-cairo">
+            أبوابنا مفتوحة لاستقبالكم وخدمتكم على مدار الساعة طوال أيام الأسبوع لنكون رفيق سهراتكم وأيامكم المميزة.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       Footer & Contact Section (#contact)
+       ====================================================================== -->
+  <footer id="contact" class="bg-obsidian pt-16 pb-12 border-t border-[rgba(212,163,89,0.18)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+
+        <!-- Col 1: Brand Editorial Info -->
+        <div class="lg:col-span-1">
+          <div class="flex items-center gap-3 mb-4">
+            <img src="logo.png" alt="بن ليل"
+              class="w-12 h-12 rounded-full border border-primary-gold/40 p-0.5 bg-[#0D0B0A] object-contain shadow-sm" />
+            <div>
+              <span class="font-amiri text-2xl font-bold gold-gradient-text">بن ليل</span>
+              <p class="text-[10px] text-muted font-cairo">BON LEIL COFFEE</p>
+            </div>
+          </div>
+          <p class="font-amiri text-sm text-primary-glow font-bold mb-3">«قهوة تُحكى... مش بس تُشرب»</p>
+          <p class="text-xs text-muted leading-relaxed font-cairo">
+            قهوة بمذاق مختلف وجودة تليق بذوقك الرفيع. وجهتكم الأولى للاستمتاع بفنجان قهوة لا يُنسى في قلب دمياط.
+          </p>
+        </div>
+
+        <!-- Col 2: Working Hours & Location -->
+        <div>
+          <h4 class="text-sm font-bold text-tertiary-crema mb-4 flex items-center gap-2 font-cairo">
+            <i class="fa-solid fa-location-dot text-primary-gold"></i>
+            <span>الموقع ومواعيد العمل</span>
+          </h4>
+          <ul class="space-y-3 text-xs text-muted font-cairo">
+            <li class="flex items-start gap-2.5">
+              <i class="fa-solid fa-map-pin text-primary-gold mt-1"></i>
+              <div>
+                <strong class="text-tertiary-crema block">العنوان:</strong>
+                <span>إسكندرية الجديدة / مركز فارسكور / دمياط، مصر (34711)</span>
+              </div>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <i class="fa-solid fa-clock text-primary-gold mt-1"></i>
+              <div>
+                <strong class="text-tertiary-crema block">مواعيد العمل:</strong>
+                <span class="text-emerald-400 font-bold">مفتوح دائماً (24 ساعة) طوال الأسبوع</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Direct Contact -->
+        <div>
+          <h4 class="text-sm font-bold text-tertiary-crema mb-4 flex items-center gap-2 font-cairo">
+            <i class="fa-solid fa-phone-volume text-primary-gold"></i>
+            <span>أرقام التواصل والطلبات</span>
+          </h4>
+          <ul class="space-y-3 text-xs text-muted font-cairo">
+            <li class="flex items-center gap-2.5">
+              <i class="fa-solid fa-phone text-primary-gold"></i>
+              <span>اتصال:</span>
+              <a href="tel:01033414033" class="text-tertiary-crema hover:text-primary-gold transition font-bold"
+                dir="ltr">01033414033</a>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <i class="fa-solid fa-phone text-primary-gold"></i>
+              <span>اتصال:</span>
+              <a href="tel:01005015435" class="text-tertiary-crema hover:text-primary-gold transition font-bold"
+                dir="ltr">01005015435</a>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <i class="fa-brands fa-whatsapp text-emerald-400 text-sm"></i>
+              <span>واتساب مباشر:</span>
+              <a href="https://wa.me/201033414033" target="_blank" rel="noopener noreferrer"
+                class="text-tertiary-crema hover:text-primary-gold transition font-bold" dir="ltr">+201033414033</a>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <i class="fa-solid fa-envelope text-primary-gold"></i>
+              <span>البريد الإلكتروني:</span>
+              <a href="mailto:abdoanis72@gmail.com" class="text-tertiary-crema hover:text-primary-gold transition"
+                dir="ltr">abdoanis72@gmail.com</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Quick Order & Location CTA -->
+        <div>
+          <h4 class="text-sm font-bold text-tertiary-crema mb-4 flex items-center gap-2 font-cairo">
+            <i class="fa-solid fa-paper-plane text-primary-gold"></i>
+            <span>طلب فوري مباشر</span>
+          </h4>
+          <p class="text-xs text-muted mb-4 font-cairo leading-relaxed">
+            يسعدنا استقبال طلباتكم واستفساراتكم على مدار الساعة عبر الواتساب أو الهاتف:
+          </p>
+          <div class="flex flex-col gap-2.5">
+            <a href="https://wa.me/201033414033" target="_blank" rel="noopener noreferrer"
+              class="btn-gold py-2.5 px-4 text-xs">
+              <i class="fa-brands fa-whatsapp text-sm"></i>
+              <span>محادثة واتساب مباشرة</span>
+            </a>
+            <a href="https://maps.google.com/?q=فارسكور+دمياط" target="_blank" rel="noopener noreferrer"
+              class="btn-gold-outline py-2.5 px-4 text-xs">
+              <i class="fa-solid fa-map-location-dot"></i>
+              <span>عرض الموقع على الخريطة</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Copyright & Credit -->
+      <div
+        class="pt-8 border-t border-[rgba(212,163,89,0.12)] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted font-cairo">
+        <p>جميع الحقوق محفوظة © 2026 <strong class="text-tertiary-crema">بن ليل (Bon Leil)</strong></p>
+        <div class="flex items-center gap-6">
+          <span class="font-amiri text-sm text-primary-gold">«قهوة تُحكى... مش بس تُشرب»</span>
+          <span>دمياط • فارسكور</span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ======================================================================
+       Modern Feature: Floating Smart Order Tray Pill (Right Bottom)
+       ====================================================================== -->
+  <div id="cart-floating-bar" 
+       onclick="openCart()" 
+       class="cart-floating-bar" 
+       style="display: none;" 
+       title="عرض سلة الطلب">
+    <div class="cart-badge-count" id="cart-count-badge">0</div>
+    <div class="flex flex-col">
+      <span class="text-xs font-bold text-tertiary-crema">سلة طلباتك</span>
+      <span id="cart-floating-summary" class="text-[10px] text-muted -mt-0.5">انقر للمراجعة وتأكيد الواتساب</span>
+    </div>
+    <div class="w-8 h-8 rounded-full bg-primary-gold/15 flex items-center justify-center text-primary-gold text-xs ml-1">
+      <i class="fa-solid fa-chevron-left"></i>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       Modern Feature: Cart Slide-out Drawer
+       ====================================================================== -->
+  <div id="cart-drawer-overlay" class="cart-drawer-overlay" onclick="if(event.target === this) closeCart();">
+    <div class="cart-drawer">
+      <!-- Drawer Header -->
+      <div class="p-5 border-b border-[rgba(212,163,89,0.18)] flex items-center justify-between bg-surface-lowest">
+        <div class="flex items-center gap-2.5">
+          <span class="w-8 h-8 rounded-full bg-primary-gold/15 border border-primary-gold/30 flex items-center justify-center text-primary-gold text-xs">
+            <i class="fa-solid fa-bag-shopping"></i>
+          </span>
+          <div>
+            <h4 class="font-headline-sm text-tertiary-crema">سلة الطلبات المجمعة</h4>
+            <span class="text-[11px] text-muted"><span id="cart-drawer-count">0</span> أصناف مضافة</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <button type="button" onclick="clearCart()" class="text-[11px] text-muted hover:text-red-400 transition" title="إفراغ السلة">
+            إفراغ الكل
+          </button>
+          <button type="button" onclick="closeCart()" class="text-muted hover:text-cream text-lg p-2 cursor-pointer transition">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Drawer Items List -->
+      <div id="cart-drawer-items" class="flex-1 overflow-y-auto p-5 space-y-3">
+        <!-- Rendered dynamically by script.js -->
+      </div>
+
+      <!-- Drawer Footer & WhatsApp Checkout -->
+      <div class="p-5 border-t border-[rgba(212,163,89,0.18)] bg-surface-lowest flex flex-col gap-3">
+        <!-- Customer Notes Input -->
+        <div>
+          <label class="block text-[11px] text-muted mb-1 font-medium">ملاحظات إضافية (اختياري - مثل السكر أو التوصيل):</label>
+          <input type="text" id="cart-customer-notes" placeholder="مثال: القهوة سكر مظبوط، التوصيل لشارع البحر..."
+            class="input-nocturne w-full text-xs py-2 px-3 rounded-[4px]" />
+        </div>
+
+        <button type="button" 
+                onclick="sendWhatsAppFullOrder()" 
+                class="btn-gold w-full py-3 text-sm shadow-xl flex items-center justify-center gap-2">
+          <i class="fa-brands fa-whatsapp text-lg"></i>
+          <span>إرسال كامل الطلب عبر واتساب</span>
+        </button>
+
+        <span class="text-[10px] text-center text-[#7E7365]">
+          سيتم فتح محادثة واتساب منسقة بكافة الأصناف والأوزان المطلوبة
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       Modern Feature: Sensory Quick-View Modal Overlay
+       ====================================================================== -->
+  <div id="sensory-modal-overlay" class="sensory-modal-overlay" onclick="if(event.target === this) closeQuickView();">
+    <div id="sensory-modal-container" class="w-full max-w-2xl">
+      <!-- Rendered dynamically by script.js -->
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       Modern Feature: Mobile Bottom Thumb Dock (< 768px)
+       ====================================================================== -->
+  <div class="mobile-bottom-dock md:hidden">
+    <a href="#menu" class="flex flex-col items-center text-xs text-muted hover:text-primary-gold transition">
+      <i class="fa-solid fa-utensils text-sm mb-0.5"></i>
+      <span class="text-[10px]">المنيو</span>
+    </a>
+    <button type="button" onclick="selectMood('energy')" class="flex flex-col items-center text-xs text-muted hover:text-primary-gold transition">
+      <i class="fa-solid fa-wand-magic-sparkles text-sm mb-0.5 text-primary-gold"></i>
+      <span class="text-[10px]">المزاج</span>
+    </button>
+    <button type="button" onclick="openCart()" class="flex flex-col items-center text-xs text-primary-gold transition relative">
+      <i class="fa-solid fa-basket-shopping text-base mb-0.5"></i>
+      <span class="text-[10px]">الطلب</span>
+    </button>
+    <a href="https://wa.me/201033414033" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center text-xs text-emerald-400 transition">
+      <i class="fa-brands fa-whatsapp text-base mb-0.5"></i>
+      <span class="text-[10px]">واتساب</span>
+    </a>
+  </div>
+
+  <!-- ======================================================================
+       Floating WhatsApp Button (Bottom-Left Corner)
+       ====================================================================== -->
+  <a href="https://wa.me/201033414033" target="_blank" rel="noopener noreferrer"
+    class="fixed bottom-6 left-6 z-40 floating-whatsapp w-14 h-14 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full flex items-center justify-center shadow-2xl transition-transform hover:scale-110 group cursor-pointer"
+    title="تواصل معنا عبر واتساب">
+    <i class="fa-brands fa-whatsapp text-3xl"></i>
+    <span
+      class="absolute left-16 bg-[#0D0B0A]/95 text-tertiary-crema text-xs px-3 py-1.5 rounded-[4px] border border-primary-gold/30 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-lg">
+      تواصل معنا عبر واتساب
+    </span>
+  </a>
+
+  <!-- ======================================================================
+       Back To Top Button (Bottom-Right Corner)
+       ====================================================================== -->
+  <button id="back-to-top"
+    class="fixed bottom-20 sm:bottom-6 right-6 z-30 w-11 h-11 rounded-full bg-surface-lowest border border-primary-gold/40 text-primary-gold hover:bg-primary-gold hover:text-obsidian flex items-center justify-center transition-all duration-300 opacity-0 pointer-events-none shadow-xl cursor-pointer"
+    title="الرجوع للأعلى">
+    <i class="fa-solid fa-arrow-up text-sm"></i>
+  </button>
+
+  <!-- JavaScript Logic -->
+  <script src="script.js"></script>
+</body>
+
+</html>

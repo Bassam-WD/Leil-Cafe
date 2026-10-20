@@ -1,0 +1,809 @@
+/* ==========================================================================
+   بن ليل (Bon Leil / Nocturne Reserve) - Design System Implementation
+   Based on DESIGN.md: High-Contrast Luxury Minimalism & Tactile Nocturnal Depth
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Design Tokens & CSS Custom Properties
+   -------------------------------------------------------------------------- */
+:root {
+  /* Surface Stack (Chiaroscuro Tonal Stacking) */
+  --surface-ground: #0D0B0A;             /* Level 0: Pure matte obsidian base */
+  --surface-base: #151312;               /* Base background */
+  --surface-lowest: #100E0D;             /* Deepest containers / inputs */
+  --surface-card: #171311;               /* Level 1: Coffee cellar tint */
+  --surface-low: #1D1B1A;                /* Low surface container */
+  --surface-container: #221F1E;          /* Level 2: Raised interaction layer */
+  --surface-raised: #241C18;             /* Elevated cards & flavor chips */
+  --surface-high: #2C2928;               /* High elevation / groove tracks */
+  --surface-highest: #373433;            /* Highest surface */
+  --surface-bright: #3C3837;
+
+  /* Primary Gold Palette (Gilded Calligraphic Identity) */
+  --primary-gold: #D4A359;               /* Core Gold Foil */
+  --primary-gold-hover: #F3C97E;         /* Elevated gold hover presence */
+  --primary-gold-dark: #B6833D;          /* Deep burnished gold */
+  --primary-tint: #F2BE71;               /* Illuminated ember tint */
+  --primary-fixed: #FFDDB1;
+  --on-primary: #442B00;
+
+  /* Secondary Palette (Fresh Roast) */
+  --secondary-roast: #8A5A36;            /* Warm Arabica roast tone */
+  --secondary-roast-dark: #6A3F1D;
+  --secondary-container: #6A3F1D;
+  --on-secondary-container: #E8AC81;
+
+  /* Tertiary Palette (Velvet Crema & Literary Text) */
+  --tertiary-crema: #F5E6CA;             /* Parchment & crema highlight */
+  --text-on-surface: #E8E1DF;            /* Primary light text (88% opacity) */
+  --text-muted: #A89F91;                 /* Warm muted brown-gray */
+  --text-dim: #7E7365;                   /* Subtle placeholders & telemetry */
+
+  /* Borders & Hairlines */
+  --border-hairline: rgba(212, 163, 89, 0.12); /* Level 1 perimeter line */
+  --border-subtle: rgba(212, 163, 89, 0.18);
+  --border-interactive: rgba(212, 163, 89, 0.28);
+  --border-glow: rgba(212, 163, 89, 0.55);      /* Hover luminescence */
+  --border-roast: rgba(138, 90, 54, 0.35);
+
+  /* Shadows & Depth */
+  --shadow-level-2: 0 12px 32px -8px rgba(212, 163, 89, 0.08), 0 4px 12px rgba(0, 0, 0, 0.6);
+  --shadow-gold-glow: 0 0 20px rgba(212, 163, 89, 0.35);
+  --shadow-amber-halo: 0 0 30px rgba(212, 163, 89, 0.2);
+
+  /* Typography */
+  --font-display: 'Amiri', serif;
+  --font-ui: 'Cairo', sans-serif;
+
+  /* Radii (Soft Geometric Silhouettes) */
+  --radius-sm: 0.125rem;   /* 2px */
+  --radius-base: 0.25rem;  /* 4px - Inputs, tags, buttons */
+  --radius-md: 0.375rem;   /* 6px */
+  --radius-lg: 0.5rem;     /* 8px - Product cards, packaging containers */
+  --radius-xl: 0.75rem;    /* 12px - Tasting notes, featured callouts */
+  --radius-full: 9999px;   /* Pills, status badges */
+}
+
+/* --------------------------------------------------------------------------
+   2. Reset & Tactile Background Grain Overlay
+   -------------------------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  direction: rtl;
+  background-color: var(--surface-ground);
+}
+
+body {
+  background-color: var(--surface-base);
+  color: var(--text-on-surface);
+  font-family: var(--font-ui);
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Subtle Matte Paper Film Grain for Nocturnal Luxury Packaging Texture */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.032;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Custom Nocturne Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: var(--surface-ground);
+}
+::-webkit-scrollbar-thumb {
+  background: #231E1B;
+  border-radius: var(--radius-base);
+  border: 1px solid var(--border-hairline);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-gold);
+}
+
+/* --------------------------------------------------------------------------
+   3. Editorial Typography Utilities (Amiri & Cairo)
+   -------------------------------------------------------------------------- */
+.font-amiri {
+  font-family: var(--font-display);
+}
+
+.font-cairo {
+  font-family: var(--font-ui);
+}
+
+/* Display Hero: Amiri 56px / 72px (Mobile 36px / 48px) */
+.display-hero {
+  font-family: var(--font-display);
+  font-size: 36px;
+  line-height: 48px;
+  font-weight: 700;
+}
+@media (min-width: 768px) {
+  .display-hero {
+    font-size: 56px;
+    line-height: 72px;
+  }
+}
+
+/* Headline Large: Amiri 40px / 52px (Mobile 28px / 38px) */
+.headline-lg {
+  font-family: var(--font-display);
+  font-size: 28px;
+  line-height: 38px;
+  font-weight: 700;
+}
+@media (min-width: 768px) {
+  .headline-lg {
+    font-size: 40px;
+    line-height: 52px;
+  }
+}
+
+/* Headline Medium: Cairo 26px / 36px */
+.headline-md {
+  font-family: var(--font-ui);
+  font-size: 22px;
+  line-height: 32px;
+  font-weight: 600;
+}
+@media (min-width: 768px) {
+  .headline-md {
+    font-size: 26px;
+    line-height: 36px;
+  }
+}
+
+/* Numerals in Amiri Gold for Prices & Batch Telemetry */
+.price-numeral {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--primary-tint);
+  letter-spacing: 0.5px;
+}
+
+/* Metallic Gold Calligraphic Gradient Text */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #FFF5D6 0%, #F3C97E 25%, #D4A359 65%, #B6833D 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.8));
+}
+
+.gold-gradient-subtle {
+  background: linear-gradient(135deg, #F5E6CA 0%, #D4A359 70%, #8A5A36 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* --------------------------------------------------------------------------
+   4. Buttons (Foil Gold & Obsidian Wire)
+   -------------------------------------------------------------------------- */
+.btn-gold {
+  background: linear-gradient(135deg, #F3C97E 0%, #D4A359 50%, #B6833D 100%);
+  color: var(--surface-ground);
+  font-family: var(--font-ui);
+  font-weight: 700;
+  border-radius: var(--radius-base);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 16px rgba(212, 163, 89, 0.25);
+  border: 1px solid rgba(255, 245, 214, 0.3);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.btn-gold:hover {
+  box-shadow: var(--shadow-gold-glow);
+  transform: translateY(-2px);
+  filter: brightness(1.06);
+}
+
+.btn-gold::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(60deg, transparent, rgba(255, 255, 255, 0.32), transparent);
+  transform: rotate(30deg) translateX(-100%);
+  transition: transform 0.8s ease;
+}
+
+.btn-gold:hover::after {
+  transform: rotate(30deg) translateX(100%);
+}
+
+.btn-gold-outline {
+  background: rgba(23, 19, 17, 0.6);
+  border: 1px solid rgba(212, 163, 89, 0.4);
+  color: var(--tertiary-crema);
+  font-family: var(--font-ui);
+  font-weight: 600;
+  border-radius: var(--radius-base);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.btn-gold-outline:hover {
+  background: rgba(212, 163, 89, 0.12);
+  border-color: var(--primary-gold);
+  color: var(--primary-gold-hover);
+  box-shadow: 0 4px 16px rgba(212, 163, 89, 0.2);
+  transform: translateY(-2px);
+}
+
+.btn-add-order {
+  background: rgba(36, 28, 24, 0.8);
+  border: 1px solid rgba(212, 163, 89, 0.3);
+  color: var(--primary-gold);
+  border-radius: var(--radius-base);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 12px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.btn-add-order:hover {
+  background: var(--primary-gold);
+  color: var(--surface-ground);
+  border-color: var(--primary-gold);
+  box-shadow: 0 2px 10px rgba(212, 163, 89, 0.35);
+  transform: translateY(-1px);
+}
+
+/* Text Link with Right-to-Left Animated Gold Underline */
+.link-gold-underline {
+  position: relative;
+  color: var(--tertiary-crema);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.link-gold-underline::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: -3px;
+  width: 0;
+  height: 1.5px;
+  background: var(--primary-gold);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.link-gold-underline:hover {
+  color: var(--primary-gold);
+}
+
+.link-gold-underline:hover::after {
+  width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   5. Chiaroscuro Cards & Mouse Spotlight Glow
+   -------------------------------------------------------------------------- */
+.luxury-card {
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-lg);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  background-image: radial-gradient(350px circle at var(--mouse-x, -500px) var(--mouse-y, -500px), rgba(212, 163, 89, 0.08), transparent 60%);
+}
+
+.luxury-card:hover {
+  background-color: var(--surface-low);
+  border-color: var(--border-glow);
+  box-shadow: var(--shadow-level-2);
+  transform: translateY(-2px);
+}
+
+.product-visual-container {
+  overflow: hidden;
+  position: relative;
+  background: radial-gradient(circle at center, #1F1916 0%, #0D0B0A 100%);
+  cursor: pointer;
+}
+
+.product-visual-container img {
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.luxury-card:hover .product-visual-container img {
+  transform: scale(1.03);
+}
+
+.dotted-leader {
+  flex-grow: 1;
+  border-bottom: 2px dotted rgba(212, 163, 89, 0.3);
+  height: 1px;
+  margin: 0 12px;
+  min-width: 20px;
+}
+
+/* --------------------------------------------------------------------------
+   6. Chips, Flavor Tags & Status Pills
+   -------------------------------------------------------------------------- */
+.flavor-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  background-color: var(--surface-raised);
+  color: var(--primary-gold);
+  border: 1px solid var(--border-hairline);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  transition: all 0.25s ease;
+}
+
+.flavor-chip:hover {
+  border-color: var(--border-glow);
+  background-color: var(--surface-high);
+}
+
+.flavor-chip .ember-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: var(--radius-full);
+  background-color: var(--primary-tint);
+  box-shadow: 0 0 6px rgba(242, 190, 113, 0.8);
+}
+
+.badge-special {
+  background: linear-gradient(135deg, rgba(242, 190, 113, 0.16), rgba(212, 163, 89, 0.28));
+  border: 1px solid rgba(242, 190, 113, 0.45);
+  color: var(--primary-gold-hover);
+  border-radius: var(--radius-full);
+}
+
+.filter-pill {
+  transition: all 0.25s ease;
+  white-space: nowrap;
+  border-radius: var(--radius-full);
+  background: var(--surface-card);
+  border: 1px solid var(--border-hairline);
+  color: var(--text-muted);
+}
+
+.filter-pill:hover {
+  border-color: var(--primary-gold);
+  color: var(--tertiary-crema);
+}
+
+.filter-pill.active {
+  background: linear-gradient(135deg, #F3C97E 0%, #D4A359 60%, #B6833D 100%);
+  color: var(--surface-ground) !important;
+  font-weight: 700;
+  border-color: var(--primary-gold);
+  box-shadow: 0 4px 16px rgba(212, 163, 89, 0.3);
+}
+
+/* --------------------------------------------------------------------------
+   7. Form Inputs & Search
+   -------------------------------------------------------------------------- */
+.input-nocturne {
+  background-color: var(--surface-lowest);
+  color: var(--text-on-surface);
+  border: 1px solid var(--border-roast);
+  border-radius: var(--radius-base);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: var(--font-ui);
+}
+
+.input-nocturne::placeholder {
+  color: var(--text-dim);
+}
+
+.input-nocturne:focus {
+  border-color: var(--primary-gold);
+  box-shadow: 0 0 16px rgba(212, 163, 89, 0.22);
+  outline: none;
+}
+
+/* --------------------------------------------------------------------------
+   8. Coffee Profile Meter
+   -------------------------------------------------------------------------- */
+.profile-meter-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background: rgba(16, 14, 13, 0.6);
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius-base);
+  border: 1px solid rgba(212, 163, 89, 0.08);
+}
+
+.profile-meter-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-size: 11px;
+}
+
+.profile-meter-label {
+  color: var(--text-muted);
+  width: 75px;
+  flex-shrink: 0;
+  font-weight: 500;
+}
+
+.profile-meter-track {
+  flex: 1;
+  height: 5px;
+  background-color: var(--surface-high);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  position: relative;
+}
+
+.profile-meter-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  background: linear-gradient(to left, var(--primary-gold), var(--primary-tint));
+  box-shadow: 0 0 8px rgba(212, 163, 89, 0.4);
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.profile-meter-val {
+  font-family: var(--font-display);
+  color: var(--primary-gold-hover);
+  font-size: 11px;
+  width: 32px;
+  text-align: left;
+}
+
+/* --------------------------------------------------------------------------
+   9. Coffee Weight Selector Buttons
+   -------------------------------------------------------------------------- */
+.weight-btn {
+  border-radius: var(--radius-base);
+  border: 1px solid var(--border-hairline);
+  background: rgba(16, 14, 13, 0.7);
+  color: var(--text-muted);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.weight-btn:hover {
+  border-color: var(--border-interactive);
+  color: var(--tertiary-crema);
+}
+
+.weight-btn.selected {
+  background: linear-gradient(135deg, #F3C97E 0%, #D4A359 70%, #B6833D 100%);
+  color: var(--surface-ground) !important;
+  font-weight: 700;
+  border-color: var(--primary-gold);
+  box-shadow: 0 2px 10px rgba(212, 163, 89, 0.35);
+}
+
+/* --------------------------------------------------------------------------
+   10. Tabs & Navigation Bar
+   -------------------------------------------------------------------------- */
+.tab-btn {
+  position: relative;
+  transition: all 0.3s ease;
+  border-radius: var(--radius-base);
+  color: var(--text-muted);
+}
+
+.tab-btn.active {
+  background: linear-gradient(135deg, #F3C97E 0%, #D4A359 60%, #B6833D 100%);
+  color: var(--surface-ground) !important;
+  font-weight: 700;
+  box-shadow: 0 4px 20px rgba(212, 163, 89, 0.3);
+}
+
+.tab-content {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.tab-content.hidden-tab {
+  display: none;
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.tab-content.active-tab {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   11. Interactive Mood Matcher (Coffee & Mood Finder)
+   -------------------------------------------------------------------------- */
+.mood-card {
+  background: linear-gradient(135deg, rgba(29, 27, 26, 0.85) 0%, rgba(21, 19, 18, 0.95) 100%);
+  border: 1px solid rgba(212, 163, 89, 0.2);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-level-2);
+  position: relative;
+  overflow: hidden;
+}
+
+.mood-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(212, 163, 89, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.mood-btn {
+  background: rgba(16, 14, 13, 0.7);
+  border: 1px solid var(--border-hairline);
+  color: var(--tertiary-crema);
+  border-radius: var(--radius-full);
+  padding: 8px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.mood-btn:hover {
+  border-color: var(--primary-gold);
+  background: rgba(36, 28, 24, 0.9);
+  color: var(--primary-gold-hover);
+  transform: translateY(-1px);
+}
+
+.mood-btn.active {
+  background: linear-gradient(135deg, #F3C97E 0%, #D4A359 60%, #B6833D 100%);
+  color: var(--surface-ground) !important;
+  font-weight: 700;
+  border-color: var(--primary-gold);
+  box-shadow: 0 4px 16px rgba(212, 163, 89, 0.35);
+}
+
+/* --------------------------------------------------------------------------
+   12. Floating WhatsApp Smart Order Bar & Drawer (Level 3 Glass)
+   -------------------------------------------------------------------------- */
+.cart-floating-bar {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 45;
+  background: rgba(21, 19, 18, 0.88);
+  backdrop-filter: blur(20px);
+  border: 1.5px solid var(--border-glow);
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.8), 0 0 24px rgba(212, 163, 89, 0.25);
+  border-radius: var(--radius-full);
+  padding: 6px 10px 6px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: pointer;
+}
+
+.cart-floating-bar:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 20px 48px -10px rgba(0, 0, 0, 0.9), 0 0 32px rgba(212, 163, 89, 0.4);
+}
+
+.cart-badge-count {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, #F3C97E 0%, #D4A359 100%);
+  color: var(--surface-ground);
+  font-weight: 800;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Cart Slide-out Drawer */
+.cart-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(13, 11, 10, 0.75);
+  backdrop-filter: blur(8px);
+  z-index: 60;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.cart-drawer-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.cart-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 440px;
+  background: var(--surface-card);
+  border-right: 1px solid var(--border-interactive);
+  z-index: 61;
+  box-shadow: 20px 0 50px rgba(0, 0, 0, 0.8);
+  transform: translateX(-100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-drawer-overlay.open .cart-drawer {
+  transform: translateX(0);
+}
+
+.cart-item-row {
+  background: var(--surface-lowest);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-base);
+  padding: 12px;
+  transition: all 0.2s ease;
+}
+
+.cart-item-row:hover {
+  border-color: var(--border-interactive);
+}
+
+.cart-qty-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-base);
+  background: var(--surface-container);
+  border: 1px solid var(--border-hairline);
+  color: var(--tertiary-crema);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cart-qty-btn:hover {
+  background: var(--primary-gold);
+  color: var(--surface-ground);
+}
+
+/* --------------------------------------------------------------------------
+   13. Sensory Quick-View Modal (Level 3 Glass)
+   -------------------------------------------------------------------------- */
+.sensory-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(13, 11, 10, 0.85);
+  backdrop-filter: blur(14px);
+  z-index: 70;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.sensory-modal-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sensory-modal-card {
+  background: var(--surface-card);
+  border: 1px solid var(--border-glow);
+  border-radius: var(--radius-lg);
+  max-width: 640px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.9), 0 0 30px rgba(212, 163, 89, 0.2);
+  transform: scale(0.95) translateY(12px);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.sensory-modal-overlay.open .sensory-modal-card {
+  transform: scale(1) translateY(0);
+}
+
+.brew-guide-box {
+  background: rgba(16, 14, 13, 0.7);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-base);
+  padding: 12px;
+}
+
+/* --------------------------------------------------------------------------
+   14. Mobile Bottom Thumb Dock
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .mobile-bottom-dock {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(13, 11, 10, 0.92);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid var(--border-hairline);
+    padding: 8px 16px;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   15. Ambient Pulsing & Floating Elements
+   -------------------------------------------------------------------------- */
+@keyframes goldPulse {
+  0%, 100% {
+    box-shadow: 0 0 16px rgba(212, 163, 89, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 32px rgba(212, 163, 89, 0.45);
+  }
+}
+
+.gold-pulse-halo {
+  animation: goldPulse 3.5s infinite ease-in-out;
+}
+
+@keyframes waPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.55);
+  }
+  70% {
+    box-shadow: 0 0 0 18px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+.floating-whatsapp {
+  animation: waPulse 2s infinite;
+}
