@@ -352,6 +352,141 @@ body::before {
 }
 
 /* --------------------------------------------------------------------------
+   5.1 Category Menu Box & Dotted Item Rows (Matching Reference Design)
+   -------------------------------------------------------------------------- */
+.category-menu-box {
+  background-color: var(--surface-card);
+  border: 1px solid rgba(212, 163, 89, 0.18);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.category-menu-box:hover {
+  border-color: rgba(212, 163, 89, 0.45);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 163, 89, 0.1);
+  transform: translateY(-2px);
+}
+
+.category-menu-box-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(212, 163, 89, 0.15);
+}
+
+.menu-item-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.45rem 0.4rem;
+  border-radius: var(--radius-base);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+.menu-item-row:hover {
+  background-color: rgba(212, 163, 89, 0.08);
+}
+
+.menu-item-bullet {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid rgba(212, 163, 89, 0.35);
+  background: rgba(16, 14, 13, 0.8);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-gold);
+  font-size: 8px;
+  flex-shrink: 0;
+  margin-left: 8px;
+  transition: all 0.2s ease;
+}
+
+.menu-item-row:hover .menu-item-bullet {
+  background: var(--primary-gold);
+  color: var(--surface-ground);
+  box-shadow: 0 0 8px rgba(212, 163, 89, 0.6);
+  border-color: var(--primary-gold);
+}
+
+.menu-item-name {
+  font-family: var(--font-ui);
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--tertiary-crema);
+  flex-shrink: 0;
+  transition: color 0.2s ease;
+}
+
+.menu-item-row:hover .menu-item-name {
+  color: var(--primary-gold-hover);
+}
+
+.menu-item-dots {
+  flex-grow: 1;
+  border-bottom: 2px dotted rgba(212, 163, 89, 0.25);
+  height: 1px;
+  margin: 0 10px;
+  min-width: 15px;
+  transition: border-color 0.2s ease;
+}
+
+.menu-item-row:hover .menu-item-dots {
+  border-bottom-color: rgba(212, 163, 89, 0.55);
+}
+
+.menu-item-add-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid rgba(212, 163, 89, 0.3);
+  background: rgba(36, 28, 24, 0.6);
+  color: var(--primary-gold);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.menu-item-row:hover .menu-item-add-btn {
+  background: var(--primary-gold);
+  color: var(--surface-ground);
+  border-color: var(--primary-gold);
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(212, 163, 89, 0.4);
+}
+
+.price-placeholder-pill {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--primary-tint);
+  background: rgba(13, 11, 10, 0.85);
+  padding: 1.5px 7px;
+  border-radius: var(--radius-base);
+  border: 1px solid rgba(212, 163, 89, 0.25);
+  letter-spacing: 0.5px;
+  transition: all 0.2s ease;
+}
+
+.menu-item-row:hover .price-placeholder-pill {
+  border-color: rgba(212, 163, 89, 0.5);
+  background: rgba(36, 28, 24, 0.9);
+}
+
+/* --------------------------------------------------------------------------
    6. Chips, Flavor Tags & Status Pills
    -------------------------------------------------------------------------- */
 .flavor-chip {

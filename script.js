@@ -6,7 +6,6 @@
  * 2. Interactive Coffee & Mood Matcher (مكتشف المزاج والقهوة)
  * 3. Sensory Quick-View Modal (دليل الاستكشاف وطرق التحضير)
  * 4. Chiaroscuro Mouse Spotlight Effect
- * 5. Dynamic Roastery Live Pulse & Telemetry
  * ==========================================================================
  */
 
@@ -30,91 +29,98 @@ const DRINKS_MENU = [
     category: "قهوة تركي",
     categoryId: "turkish-coffee",
     icon: "fa-mug-hot",
+    badge: "تحميص فريش",
     items: [
-      { id: "tc-1", name: "تركي فاتح", price: "-- ج.م", isSpecial: false, mood: "calm", desc: "بن فاتح طبيعي بنسبة كافيين عالية ونكهة رقيقة هادئة" },
-      { id: "tc-2", name: "تركي وسط", price: "-- ج.م", isSpecial: false, mood: "royal", desc: "تحميص متوازن مع وش كريمي كثيف وقوام معتدل" },
-      { id: "tc-3", name: "تركي غامق", price: "-- ج.م", isSpecial: false, mood: "energy", desc: "تحميص داكن لعشاق النكهة المركزة ولمسة المرارة الفاخرة" },
-      { id: "tc-4", name: "تركي محوج فاتح", price: "-- ج.م", isSpecial: false, mood: "calm", desc: "بن فاتح مع حب الهيل الأخضر الفاخر والمستكة الطبيعية" },
-      { id: "tc-5", name: "تركي محوج وسط", price: "-- ج.م", isSpecial: false, mood: "royal", desc: "تحويجة بن ليل الملكية المتوازنة بين البن الفاخر والتوابل العطرية" },
-      { id: "tc-6", name: "توليفة ليل", price: "-- ج.م", isSpecial: true, mood: "royal", desc: "خلطة بن ليل السرية الحصرية الغنية بالنغمات المعقدة" },
-      { id: "tc-7", name: "توليفة ليل اسبيشيال", price: "-- ج.م", isSpecial: true, mood: "royal", desc: "أعلى درجات البن المختص بتحويجة ملكية فائقة النقاء" },
-      { id: "tc-8", name: "توليفة طرشة", price: "-- ج.م", isSpecial: true, mood: "energy", desc: "نكهة قوية وقوام ثقيل استثنائي لعشاق ضبط المزاج الحقيقي" }
+      { id: "tc-1", name: "تركي فاتح", badge: null, mood: "calm" },
+      { id: "tc-2", name: "تركي وسط", badge: null, mood: "royal" },
+      { id: "tc-3", name: "تركي غامق", badge: null, mood: "energy" },
+      { id: "tc-4", name: "تركي محوج فاتح", badge: null, mood: "calm" },
+      { id: "tc-5", name: "تركي محوج وسط", badge: null, mood: "royal" },
+      { id: "tc-6", name: "توليفة ليل", badge: "الأكثر طلباً ★", mood: "royal" },
+      { id: "tc-7", name: "توليفة ليل اسبيشيال", badge: "إصدار خاص", mood: "royal" },
+      { id: "tc-8", name: "توليفة طرشة", badge: "مزاج عالي ⚡", mood: "energy" }
     ]
   },
   {
-    category: "إسبريسو ومشروبات مختصة",
+    category: "إسبريسو",
     categoryId: "espresso",
     icon: "fa-fire-flame-curved",
+    badge: "100% بن مختص",
     items: [
-      { id: "esp-1", name: "إسبريسو كلاسيك", price: "-- ج.م", isSpecial: false, mood: "royal", desc: "شوت إسبريسو مركز غني بكريمة مخملية ذهبية فواحة" },
-      { id: "esp-2", name: "إسبريسو سينجل", price: "-- ج.م", isSpecial: false, mood: "royal", desc: "جرعة واحدة متوازنة من حبوب البن المحمصة حديثاً" },
-      { id: "esp-3", name: "إسبريسو دبل", price: "-- ج.م", isSpecial: false, mood: "energy", desc: "جرعة مضاعفة لأقصى درجات التركيز والنشاط" }
+      { id: "esp-1", name: "إسبريسو", badge: null, mood: "royal" },
+      { id: "esp-2", name: "إسبريسو سينجل", badge: null, mood: "royal" },
+      { id: "esp-3", name: "إسبريسو دبل", badge: "طاقة مضاعفة", mood: "energy" }
     ]
   },
   {
     category: "قهوة فرنساوي ومشروبات ساخنة",
     categoryId: "french-hot",
     icon: "fa-mug-saucer",
+    badge: "حليب طازج",
     items: [
-      { id: "hot-1", name: "فرنساوي سادة", price: "-- ج.م", isSpecial: false, mood: "calm", desc: "قهوة ممزوجة بالحليب الطازج المبخر على الطريقة الفرنسية" },
-      { id: "hot-2", name: "فرنساوي بنكهات", price: "-- ج.م", isSpecial: false, mood: "calm", desc: "بنكهات البندق المحمص، الكراميل الذهبي أو الفانيليا" },
-      { id: "hot-3", name: "كابتشينو كافيه", price: "-- ج.م", isSpecial: false, mood: "calm", desc: "إسبريسو غني بطبقة رغوة حليبية مخملية ورشة كاكاو" },
-      { id: "hot-4", name: "نسكافيه كلاسيك", price: "-- ج.م", isSpecial: false, mood: "calm", desc: "مشروب سريع التحضير بحليب طازج أو سادة" },
-      { id: "hot-5", name: "كوفي ميكس", price: "-- ج.م", isSpecial: false, mood: "calm", desc: "المزيج الكلاسيكي المحبب" },
-      { id: "hot-6", name: "سحلب بن ليل الفاخر", price: "-- ج.م", isSpecial: true, mood: "fresh", desc: "سحلب شتوي غني بالمكسرات المحمصة، الزبيب، والسمسم" }
+      { id: "hot-1", name: "فرنساوي سادة", badge: null, mood: "calm" },
+      { id: "hot-2", name: "فرنساوي طعم", badge: "نكهات فاخرة", mood: "calm" },
+      { id: "hot-3", name: "كابتشينو", badge: null, mood: "calm" },
+      { id: "hot-4", name: "نسكافيه", badge: null, mood: "calm" },
+      { id: "hot-5", name: "كوفي ميكس", badge: null, mood: "calm" },
+      { id: "hot-6", name: "سحلب", badge: "بالمكسرات", mood: "fresh" }
     ]
   },
   {
-    category: "شاي ومشروبات دافئة",
+    category: "شاي",
     categoryId: "tea",
     icon: "fa-leaf",
+    badge: "سيلاني فاخر",
     items: [
-      { id: "tea-1", name: "شاي أحمر كلاسيك", price: "-- ج.م", isSpecial: false, mood: "calm", desc: "شاي سيلاني فاخر منقى بعناية" },
-      { id: "tea-2", name: "شاي بالنعناع البلدي", price: "-- ج.م", isSpecial: false, mood: "calm", desc: "شاي منعش بأوراق النعناع الأخضر الطازج" },
-      { id: "tea-3", name: "شاي بالقرنفل", price: "-- ج.م", isSpecial: false, mood: "calm", desc: "شاي دافئ بنفحات حبات القرنفل العطرية المهدئة" },
-      { id: "tea-4", name: "شاي أعشاب طبيعية", price: "-- ج.م", isSpecial: false, mood: "calm", desc: "ينسون، كراوية، أو نعناع طبيعي صافي" }
+      { id: "tea-1", name: "شاي سادة", badge: null, mood: "calm" },
+      { id: "tea-2", name: "شاي نعناع", badge: "نعناع بلدي", mood: "calm" },
+      { id: "tea-3", name: "شاي قرنفل", badge: null, mood: "calm" },
+      { id: "tea-4", name: "شاي طعم", badge: "نكهات خاصة", mood: "calm" }
     ]
   },
   {
-    category: "عصائر طبيعية فريش",
+    category: "عصائر فريش",
     categoryId: "fresh-juices",
     icon: "fa-wine-glass",
+    badge: "طبيعي 100%",
     items: [
-      { id: "j-1", name: "مانجو بيور", price: "-- ج.م", isSpecial: false, mood: "fresh", desc: "عصير مانجو طبيعي 100% غني وكثيف بدون إضافات" },
-      { id: "j-2", name: "فراولة طازجة", price: "-- ج.م", isSpecial: false, mood: "fresh", desc: "فراولة طبيعية معصورة طازجة" },
-      { id: "j-3", name: "جوافة بالحليب", price: "-- ج.م", isSpecial: false, mood: "fresh", desc: "جوافة بلدية نقية ممزوجة بحليب طازج" },
-      { id: "j-4", name: "ليمون نعناع مثلج", price: "-- ج.م", isSpecial: false, mood: "fresh", desc: "أعلى درجات الانتعاش الصيفي بحمضيات منعشة" },
-      { id: "j-5", name: "برتقال طبيعي معصور", price: "-- ج.م", isSpecial: false, mood: "fresh", desc: "برتقال بلدي طازج غني بفيتامين سي" },
-      { id: "j-6", name: "كركديه أسواني مثلج", price: "-- ج.م", isSpecial: false, mood: "fresh", desc: "كركديه أصيل بارد ومعدل للمزاج" },
-      { id: "j-7", name: "موز بالحليب والعسل", price: "-- ج.م", isSpecial: false, mood: "fresh", desc: "سموذي مغذي من الموز الطازج وحليب المزرعة" }
+      { id: "j-1", name: "مانجا", badge: "بيور فريش", mood: "fresh" },
+      { id: "j-2", name: "فراولة", badge: null, mood: "fresh" },
+      { id: "j-3", name: "جوافة", badge: "بالحليب", mood: "fresh" },
+      { id: "j-4", name: "ليمون نعناع", badge: "انتعاش فائق", mood: "fresh" },
+      { id: "j-5", name: "برتقال", badge: "معصور طازج", mood: "fresh" },
+      { id: "j-6", name: "كركديه", badge: "أسواني مثلج", mood: "fresh" },
+      { id: "j-7", name: "موز باللبن", badge: "بالعسل", mood: "fresh" }
     ]
   },
   {
     category: "مشروبات طاقة",
     categoryId: "energy-drinks",
     icon: "fa-bolt",
+    badge: "طاقة وتركيز",
     items: [
-      { id: "en-1", name: "فولت (Volt)", price: "-- ج.م", isSpecial: false, mood: "energy" },
-      { id: "en-2", name: "تويست (Twist)", price: "-- ج.م", isSpecial: false, mood: "energy" },
-      { id: "en-3", name: "شارك (Shark)", price: "-- ج.م", isSpecial: false, mood: "energy" },
-      { id: "en-4", name: "بوم بوم (Boom Boom)", price: "-- ج.م", isSpecial: false, mood: "energy" },
-      { id: "en-5", name: "ستينج (Sting)", price: "-- ج.م", isSpecial: false, mood: "energy" },
-      { id: "en-6", name: "باور هورس (Power Horse)", price: "-- ج.م", isSpecial: false, mood: "energy" },
-      { id: "en-7", name: "مونستر (Monster)", price: "-- ج.م", isSpecial: false, mood: "energy" },
-      { id: "en-8", name: "ريد بول (Red Bull)", price: "-- ج.م", isSpecial: false, mood: "energy" },
-      { id: "en-9", name: "كود ريد (Code Red)", price: "-- ج.م", isSpecial: false, mood: "energy" }
+      { id: "en-1", name: "فولت", badge: null, mood: "energy" },
+      { id: "en-2", name: "تويست", badge: null, mood: "energy" },
+      { id: "en-3", name: "شارك", badge: null, mood: "energy" },
+      { id: "en-4", name: "بوم بوم", badge: null, mood: "energy" },
+      { id: "en-5", name: "ستينج", badge: null, mood: "energy" },
+      { id: "en-6", name: "باور هورس", badge: null, mood: "energy" },
+      { id: "en-7", name: "مونستر", badge: null, mood: "energy" },
+      { id: "en-8", name: "ريد بول", badge: null, mood: "energy" },
+      { id: "en-9", name: "كود ريد", badge: null, mood: "energy" }
     ]
   },
   {
     category: "مشروبات غازية ومياه",
     categoryId: "soft-drinks",
     icon: "fa-bottle-water",
+    badge: "بارد ومثلج",
     items: [
-      { id: "sd-1", name: "بيبسي مثلج", price: "-- ج.م", isSpecial: false, mood: "fresh" },
-      { id: "sd-2", name: "سفن آب", price: "-- ج.م", isSpecial: false, mood: "fresh" },
-      { id: "sd-3", name: "ميرندا برتقال", price: "-- ج.م", isSpecial: false, mood: "fresh" },
-      { id: "sd-4", name: "ماونتن ديو", price: "-- ج.م", isSpecial: false, mood: "fresh" },
-      { id: "sd-5", name: "مياه معدنية نقية", price: "-- ج.م", isSpecial: false, mood: "fresh" }
+      { id: "sd-1", name: "بيبسي", badge: null, mood: "fresh" },
+      { id: "sd-2", name: "سفن", badge: null, mood: "fresh" },
+      { id: "sd-3", name: "ميرندا", badge: null, mood: "fresh" },
+      { id: "sd-4", name: "ديو", badge: null, mood: "fresh" },
+      { id: "sd-5", name: "مياه معدنية صغيرة", badge: "نقية", mood: "fresh" }
     ]
   }
 ];
@@ -356,7 +362,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setupBackToTop();
   setupScrollNavbar();
   setupSpotlightEffect();
-  setupRoasteryLivePulse();
   renderCart();
 });
 
@@ -488,7 +493,7 @@ window.filterCategory = function(categoryId) {
 };
 
 // ==========================================================================
-// عرض منيو المشروبات (Render Drinks Menu)
+// عرض منيو المشروبات (Render Drinks Menu - 3-Column Category Boxes)
 // ==========================================================================
 function renderDrinksMenu() {
   const container = document.getElementById("drinks-container");
@@ -535,76 +540,55 @@ function renderDrinksMenu() {
     return;
   }
 
-  let html = "";
+  let html = `<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">`;
+
   filteredCategories.forEach(cat => {
     html += `
-      <div class="mb-12 category-section" data-cat-id="${cat.categoryId}">
+      <div class="category-menu-box group" data-cat-id="${cat.categoryId}">
         <!-- Category Header -->
-        <div class="flex items-center justify-between pb-3 mb-6 border-b border-[rgba(212,163,89,0.15)]">
-          <div class="flex items-center gap-3">
-            <span class="w-10 h-10 rounded-sm bg-[#221F1E] border border-[rgba(212,163,89,0.25)] flex items-center justify-center text-[#D4A359] shadow-sm">
+        <div class="category-menu-box-header">
+          <div class="flex items-center gap-2.5">
+            <span class="w-8 h-8 rounded-sm bg-[#221F1E] border border-[rgba(212,163,89,0.25)] flex items-center justify-center text-[#D4A359] text-xs shadow-sm">
               <i class="fa-solid ${cat.icon}"></i>
             </span>
-            <h3 class="font-headline-md text-[#F5E6CA]">${cat.category}</h3>
+            <h3 class="font-headline-sm text-[#F5E6CA] font-bold text-sm sm:text-base">${cat.category}</h3>
           </div>
-          <span class="flavor-chip">
+          <span class="flavor-chip text-[10px] py-0.5 px-2">
             <span class="ember-dot"></span>
             ${cat.items.length} أصناف
           </span>
         </div>
 
-        <!-- Drinks Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Drinks List (Item Name right, Dotted Divider, Price Placeholder left) -->
+        <div class="flex flex-col gap-1.5">
           ${cat.items.map(item => `
-            <div class="luxury-card p-4 sm:p-5 flex flex-col justify-between group">
-              <div>
-                <div class="flex items-baseline justify-between gap-3">
-                  <!-- Drink Name & Badges -->
-                  <div class="flex items-center gap-2 flex-shrink-0">
-                    <span class="font-bold text-base text-[#F5E6CA] group-hover:text-[#F3C97E] transition-colors">
-                      ${item.name}
-                    </span>
-                    ${item.isSpecial ? `
-                      <span class="badge-special text-[10px] px-2.5 py-0.5 font-bold flex items-center gap-1">
-                        <i class="fa-solid fa-star text-[9px] text-[#D4A359]"></i> مميز
-                      </span>
-                    ` : ''}
-                  </div>
-
-                  <!-- Dotted Leader Line -->
-                  <div class="dotted-leader"></div>
-
-                  <!-- Price in Amiri Bold Numeral -->
-                  <div class="flex-shrink-0">
-                    <span class="price-numeral text-base sm:text-lg bg-[#0D0B0A] px-2.5 py-1 rounded-[4px] border border-[rgba(212,163,89,0.18)]">
-                      ${item.price}
-                    </span>
-                  </div>
-                </div>
-
-                ${item.desc ? `
-                  <p class="text-xs text-[#A89F91] mt-2 pr-1 leading-relaxed font-cairo">
-                    ${item.desc}
-                  </p>
+            <div class="menu-item-row group" 
+                 onclick="addDrinkToCart('${item.id}', '${item.name}')" 
+                 title="انقر لإضافة «${item.name}» إلى سلة الطلب">
+              <div class="flex items-center flex-shrink-0">
+                <span class="menu-item-bullet">
+                  <i class="fa-solid fa-mug-hot"></i>
+                </span>
+                <span class="menu-item-name">${item.name}</span>
+                ${item.badge ? `
+                  <span class="badge-special text-[9px] mr-1.5 px-2 py-0.5 font-bold inline-flex items-center gap-0.5">
+                    ${item.badge}
+                  </span>
                 ` : ''}
               </div>
 
-              <!-- Quick Order & Add to Cart -->
-              <div class="mt-4 pt-3 border-t border-[rgba(212,163,89,0.1)] flex items-center justify-between">
-                <button type="button" 
-                        onclick="addDrinkToCart('${item.id}', '${item.name}', '${item.price}')"
-                        class="btn-add-order">
-                  <i class="fa-solid fa-plus text-[10px]"></i>
-                  <span>أضف للطلب</span>
-                </button>
+              <!-- Dotted Divider Line -->
+              <div class="menu-item-dots"></div>
 
-                <a href="${getDrinkWhatsAppLink(item.name)}" 
-                   target="_blank" 
-                   rel="noopener noreferrer"
-                   class="link-gold-underline text-xs flex items-center gap-1.5 transition">
-                  <i class="fa-brands fa-whatsapp text-emerald-400"></i>
-                  <span>طلب مباشر</span>
-                </a>
+              <!-- Price Placeholder on Left & Interactive Cart Plus Button -->
+              <div class="flex items-center gap-2 flex-shrink-0">
+                <span class="price-placeholder-pill" title="يحدد السعر عند الطلب">-- ج.م</span>
+                <button type="button" 
+                        onclick="event.stopPropagation(); addDrinkToCart('${item.id}', '${item.name}')"
+                        class="menu-item-add-btn" 
+                        title="أضف للطلب">
+                  <i class="fa-solid fa-plus text-[10px]"></i>
+                </button>
               </div>
             </div>
           `).join("")}
@@ -613,6 +597,7 @@ function renderDrinksMenu() {
     `;
   });
 
+  html += `</div>`;
   container.innerHTML = html;
 }
 
@@ -813,7 +798,7 @@ window.selectWeight = function(itemId, weightLabel) {
 // ==========================================================================
 // سلة الطلبات المجمعة للواتساب (Smart WhatsApp Order Tray)
 // ==========================================================================
-window.addDrinkToCart = function(drinkId, drinkName, price) {
+window.addDrinkToCart = function(drinkId, drinkName) {
   const existing = cart.find(c => c.id === drinkId && c.type === 'drink');
   if (existing) {
     existing.qty += 1;
@@ -824,7 +809,6 @@ window.addDrinkToCart = function(drinkId, drinkName, price) {
       type: 'drink',
       weight: null,
       grind: null,
-      price: price,
       qty: 1
     });
   }
@@ -849,7 +833,6 @@ window.addBeanToCart = function(beanId) {
       type: 'bean',
       weight: weight,
       grind: "طحن ناعم (تركي)",
-      price: "-- ج.م",
       qty: 1
     });
   }
@@ -1148,25 +1131,6 @@ window.closeQuickView = function() {
   const overlay = document.getElementById("sensory-modal-overlay");
   if (overlay) overlay.classList.remove("open");
 };
-
-// ==========================================================================
-// نبض الكافيه المباشر وتوقيت المحمصة (Live Roastery Pulse)
-// ==========================================================================
-function setupRoasteryLivePulse() {
-  const statusTimeElem = document.getElementById("roastery-live-time");
-  if (!statusTimeElem) return;
-
-  function updateTime() {
-    const now = new Date();
-    // بتوقيت مصر المحلي
-    const options = { hour: '2-digit', minute: '2-digit', hour12: true };
-    const timeString = now.toLocaleTimeString('ar-EG', options);
-    statusTimeElem.innerText = `الآن في فارسكور ${timeString} • التحميص جارٍ طازجاً`;
-  }
-
-  updateTime();
-  setInterval(updateTime, 60000);
-}
 
 // ==========================================================================
 // تأثير ضوء الفأرة التفاعلي على الكروت (Mouse Spotlight Glow)
