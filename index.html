@@ -167,7 +167,7 @@
       style="background-image: url('assets/coffee-cup.webp');">
       <video autoplay loop muted playsinline poster="assets/coffee-cup.webp"
         class="absolute inset-0 w-full h-full object-cover brightness-[0.7] contrast-[1.1]">
-        <source src="hero-video.mp4" type="video/mp4">
+        <source src="assets/hero-background.mp4" type="video/mp4">
       </video>
 
       <!-- Deep Obsidian Tonal Vignette -->
@@ -412,68 +412,6 @@
       </div>
     </div>
 
-    <!-- ==================================================================
-         Modern Feature: Featured Roast of the Night Spotlight
-         ================================================================== -->
-    <div class="max-w-4xl mx-auto mb-10">
-      <div
-        class="luxury-card overflow-hidden p-6 md:p-8 bg-gradient-to-r from-surface-card via-surface-container to-surface-card border border-primary-gold/30 shadow-2xl relative">
-        <div class="absolute top-4 left-4 z-10">
-          <span class="badge-special text-xs font-bold px-3 py-1 flex items-center gap-1.5 shadow-lg">
-            <i class="fa-solid fa-crown text-[11px] text-primary-gold"></i>
-            <span>محصول وسهرة الليلة • إصدار محدود</span>
-          </span>
-        </div>
-
-        <div class="flex flex-col md:flex-row items-center gap-6">
-          <div
-            class="w-32 h-40 sm:w-40 sm:h-48 flex-shrink-0 flex items-center justify-center bg-obsidian/70 rounded-lg p-3 border border-primary-gold/20 shadow-inner">
-            <img src="assets/coffee-bag.webp" alt="توليفة ليل اسبيشيال" width="1024" height="1024" loading="lazy" decoding="async"
-              class="h-full w-auto object-contain filter drop-shadow-[0_10px_20px_rgba(0,0,0,0.9)]" />
-          </div>
-
-          <div class="flex-1 text-right">
-            <div class="flex flex-wrap items-center gap-2 mb-2">
-              <span class="flavor-chip text-[10px]">
-                <span class="ember-dot"></span>
-                إصدار خاص ★
-              </span>
-              <span class="text-xs text-muted">مايكرو-لوت فاخر • كولومبيا وإثيوبيا</span>
-            </div>
-
-            <h3 class="font-headline-md text-tertiary-crema gold-gradient-text mb-2">
-              توليفة ليل اسبيشيال (Signature Reserve)
-            </h3>
-
-            <p class="text-xs sm:text-sm text-muted leading-relaxed mb-4">
-              أعلى درجات الفخامة النقية من محمصة بن ليل؛ خلطة سرية محوجة بحب الهيل الملكي والمستكة الحرة مع نغمات
-              الشوكولاتة السويسرية والكراميل المدخن.
-            </p>
-
-            <div class="flex flex-wrap items-center justify-between gap-4 pt-3 border-t border-primary-gold/15">
-              <div class="flex flex-wrap gap-1.5">
-                <span class="flavor-chip text-[10px]">شوكولاتة سويسرية</span>
-                <span class="flavor-chip text-[10px]">هيل ملكي</span>
-                <span class="flavor-chip text-[10px]">كراميل مدخن</span>
-              </div>
-
-              <div class="flex items-center gap-2.5">
-                <button type="button" onclick="openQuickView('bean-7')" class="btn-gold-outline text-xs px-3.5 py-2">
-                  <i class="fa-solid fa-eye ml-1"></i>
-                  <span>دليل التحضير</span>
-                </button>
-
-                <button type="button" onclick="addBeanToCart('bean-7')" class="btn-gold text-xs px-4 py-2">
-                  <i class="fa-solid fa-cart-plus ml-1"></i>
-                  <span>أضف للطلب فوراً</span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <!-- Live Search Bar -->
     <div class="max-w-xl mx-auto mb-10">
       <div class="relative">
@@ -566,6 +504,66 @@
 
   </section>
 
+  <!-- Featured Roast of the Night -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 md:pb-16">
+    <div
+      class="luxury-card max-w-4xl mx-auto overflow-hidden p-6 md:p-8 bg-gradient-to-r from-surface-card via-surface-container to-surface-card border border-primary-gold/30 shadow-2xl relative">
+      <div class="absolute top-4 left-4 z-10">
+        <span class="badge-special text-xs font-bold px-3 py-1 flex items-center gap-1.5 shadow-lg">
+          <i class="fa-solid fa-crown text-[11px] text-primary-gold"></i>
+          <span>محصول وسهرة الليلة • إصدار محدود</span>
+        </span>
+      </div>
+
+      <div class="flex flex-col md:flex-row items-center gap-6">
+        <div
+          class="w-32 h-40 sm:w-40 sm:h-48 flex-shrink-0 flex items-center justify-center bg-obsidian/70 rounded-lg p-3 border border-primary-gold/20 shadow-inner">
+          <img src="assets/coffee-bag.webp" alt="توليفة ليل اسبيشيال" width="1024" height="1024" loading="lazy" decoding="async"
+            class="h-full w-auto object-contain filter drop-shadow-[0_10px_20px_rgba(0,0,0,0.9)]" />
+        </div>
+
+        <div class="flex-1 text-right">
+          <div class="flex flex-wrap items-center gap-2 mb-2">
+            <span class="flavor-chip text-[10px]">
+              <span class="ember-dot"></span>
+              إصدار خاص ★
+            </span>
+            <span class="text-xs text-muted">مايكرو-لوت فاخر • كولومبيا وإثيوبيا</span>
+          </div>
+
+          <h3 class="font-headline-md text-tertiary-crema gold-gradient-text mb-2">
+            توليفة ليل اسبيشيال (Signature Reserve)
+          </h3>
+
+          <p class="text-xs sm:text-sm text-muted leading-relaxed mb-4">
+            أعلى درجات الفخامة النقية من محمصة بن ليل؛ خلطة سرية محوجة بحب الهيل الملكي والمستكة الحرة مع نغمات
+            الشوكولاتة السويسرية والكراميل المدخن.
+          </p>
+
+          <div class="flex flex-wrap items-center justify-between gap-4 pt-3 border-t border-primary-gold/15">
+            <div class="flex flex-wrap gap-1.5">
+              <span class="flavor-chip text-[10px]">شوكولاتة سويسرية</span>
+              <span class="flavor-chip text-[10px]">هيل ملكي</span>
+              <span class="flavor-chip text-[10px]">كراميل مدخن</span>
+            </div>
+
+            <div class="flex items-center gap-2.5">
+              <button type="button" onclick="openQuickView('bean-7')" class="btn-gold-outline text-xs px-3.5 py-2">
+                <i class="fa-solid fa-eye ml-1"></i>
+                <span>دليل التحضير</span>
+              </button>
+
+              <button type="button" onclick="addBeanToCart('bean-7')" class="btn-gold text-xs px-4 py-2">
+                <i class="fa-solid fa-cart-plus ml-1"></i>
+                <span>أضف للطلب فوراً</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- ======================================================================
        Features / Roastery Story Section (#features)
        ====================================================================== -->
@@ -598,12 +596,6 @@
 
       <!-- Narrative & Feature Column (Right on Desktop in RTL) -->
       <div class="lg:col-span-7 order-1 lg:order-2 text-right">
-        <div class="inline-flex items-center gap-2 text-xs font-bold text-primary-gold tracking-widest uppercase mb-3">
-          <span class="w-6 h-[1px] bg-primary-gold/60"></span>
-          <span class="badge-special text-xs px-3 py-1 font-bold">أصل القهوة والتطوير</span>
-          <span class="w-6 h-[1px] bg-primary-gold/60"></span>
-        </div>
-
         <h2 class="font-amiri text-3xl sm:text-4xl md:text-5xl font-bold text-tertiary-crema mb-4 leading-tight">
           قهوة تُحكى تفاصيلها... <br class="hidden sm:inline" />
           <span class="gold-gradient-text">ولا تكفيها الكلمات</span>
