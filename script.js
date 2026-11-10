@@ -38,7 +38,7 @@ const DRINKS_MENU = [
       { id: "tc-5", name: "تركي محوج وسط", badge: null, mood: "royal" },
       { id: "tc-6", name: "توليفة ليل", badge: "الأكثر طلباً ★", mood: "royal" },
       { id: "tc-7", name: "توليفة ليل اسبيشيال", badge: "إصدار خاص", mood: "royal" },
-      { id: "tc-8", name: "توليفة طرشة", badge: "مزاج عالي ⚡", mood: "energy" }
+      { id: "tc-8", name: "توليفة طرش", badge: "مزاج عالي ⚡", mood: "energy" }
     ]
   },
   {
@@ -47,7 +47,6 @@ const DRINKS_MENU = [
     icon: "fa-fire-flame-curved",
     badge: "100% بن مختص",
     items: [
-      { id: "esp-1", name: "إسبريسو", badge: null, mood: "royal" },
       { id: "esp-2", name: "إسبريسو سينجل", badge: null, mood: "royal" },
       { id: "esp-3", name: "إسبريسو دبل", badge: "طاقة مضاعفة", mood: "energy" }
     ]
@@ -59,7 +58,7 @@ const DRINKS_MENU = [
     badge: "حليب طازج",
     items: [
       { id: "hot-1", name: "فرنساوي سادة", badge: null, mood: "calm" },
-      { id: "hot-2", name: "فرنساوي طعم", badge: "نكهات فاخرة", mood: "calm" },
+      { id: "hot-2", name: "فرنساوي اطعم", badge: "نكهات فاخرة", mood: "calm" },
       { id: "hot-3", name: "كابتشينو", badge: null, mood: "calm" },
       { id: "hot-4", name: "نسكافيه", badge: null, mood: "calm" },
       { id: "hot-5", name: "كوفي ميكس", badge: null, mood: "calm" },
@@ -75,7 +74,9 @@ const DRINKS_MENU = [
       { id: "tea-1", name: "شاي سادة", badge: null, mood: "calm" },
       { id: "tea-2", name: "شاي نعناع", badge: "نعناع بلدي", mood: "calm" },
       { id: "tea-3", name: "شاي قرنفل", badge: null, mood: "calm" },
-      { id: "tea-4", name: "شاي طعم", badge: "نكهات خاصة", mood: "calm" }
+      { id: "tea-4", name: "شاي طعم", badge: "نكهات خاصة", mood: "calm" },
+      { id: "tea-5", name: "شاي كرك", badge: null, mood: "calm" },
+      { id: "tea-6", name: "حليب", badge: null, mood: "calm" }
     ]
   },
   {
@@ -89,7 +90,7 @@ const DRINKS_MENU = [
       { id: "j-3", name: "جوافة", badge: "بالحليب", mood: "fresh" },
       { id: "j-4", name: "ليمون نعناع", badge: "انتعاش فائق", mood: "fresh" },
       { id: "j-5", name: "برتقال", badge: "معصور طازج", mood: "fresh" },
-      { id: "j-6", name: "كركديه", badge: "أسواني مثلج", mood: "fresh" },
+      { id: "j-6", name: "تمر هندي", badge: null, mood: "fresh" },
       { id: "j-7", name: "موز باللبن", badge: "بالعسل", mood: "fresh" }
     ]
   },
@@ -107,7 +108,8 @@ const DRINKS_MENU = [
       { id: "en-6", name: "باور هورس", badge: null, mood: "energy" },
       { id: "en-7", name: "مونستر", badge: null, mood: "energy" },
       { id: "en-8", name: "ريد بول", badge: null, mood: "energy" },
-      { id: "en-9", name: "كود ريد", badge: null, mood: "energy" }
+      { id: "en-9", name: "كود ريد", badge: null, mood: "energy" },
+      { id: "en-10", name: "ريتا", badge: null, mood: "energy" }
     ]
   },
   {
@@ -217,7 +219,7 @@ const COFFEE_BEANS_MENU = [
       body: { val: 55, label: "متوسط" }
     },
     brewGuide: {
-      method: "ركوة نحاسية على رمال ساخنة",
+      method: "ركوة على نار هادئة",
       ratio: "1:10 (8 جم بن لكل 80 مل ماء)",
       temp: "89°C",
       grind: "طحن ناعم مع توابل دقيقة"
@@ -297,7 +299,7 @@ const COFFEE_BEANS_MENU = [
   },
   {
     id: "bean-8",
-    name: "توليفة طرشة",
+    name: "توليفة طرش",
     badge: "قنبلة التركيز ★",
     mood: "energy",
     desc: "توليفة قوية جداً ذات تركيز فائق، طعم حاد ومفعول فوري يوقظ الحواس ويعدل الرأس من أول رشفة.",
